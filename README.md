@@ -1,9 +1,6 @@
 # TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domain Detection Methods
 ------------------------------------------------------------------------------------------------------------------------------------
-**Bioinformatics and Machine Learning (BioMLearn) Laboratory,**
-
-**University of Colorado, Colorado Springs**
-
+**OluwadareLab,University of Colorado, Colorado Springs**
 ----------------------------------------------------------------------
 
 **Contact:** <br />
