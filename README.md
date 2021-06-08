@@ -12,6 +12,8 @@
 --------------------------------------------------------------------	
 # Content of Folder
 
+* **Website Draft**: A sketch draft of the TADMaster website
+
 --------------------------------------------------------------------		
 
 # Documentation
