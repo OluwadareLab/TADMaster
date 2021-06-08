@@ -10,7 +10,7 @@
 	Email: ooluwada@uccs.edu 
 
 --------------------------------------------------------------------
-### Access TADMaster:  http://tadmaster.io/
+### Access TADMaster:  http://tadmaster.io
 
 --------------------------------------------------------------------	
 # Content of Folder
