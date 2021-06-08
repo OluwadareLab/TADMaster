@@ -4,12 +4,24 @@
 ----------------------------------------------------------------------
 
 **Contact:** <br />
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oluwatosin Oluwadare, PhD <br />
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Department of Computer Science <br />
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;University of Colorado, Colorado Springs <br />
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: ooluwada@uccs.edu 
+	Oluwatosin Oluwadare, PhD <br />
+	Department of Computer Science <br />
+	University of Colorado, Colorado Springs <br />
+	Email: ooluwada@uccs.edu 
      
 --------------------------------------------------------------------	
+# Content of Folder
 
-**1.	Content of folders:**
------------------------------------------------------------
+--------------------------------------------------------------------		
+
+# Documentation
+
+Please see [the wiki](https://github.com/OluwadareLab/TADMaster/wiki) for an extensive documentation of how to use TADMaster functions
+
+--------------------------------------------------------------------		
+
+# cite
+
+
+
+
