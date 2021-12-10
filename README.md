@@ -1,4 +1,4 @@
-# TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domain Detection Methods
+# TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domains 
 ------------------------------------------------------------------------------------------------------------------------------------
 **OluwadareLab, University of Colorado, Colorado Springs**
 ----------------------------------------------------------------------
