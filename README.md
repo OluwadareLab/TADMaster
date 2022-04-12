@@ -74,7 +74,7 @@ _________________
 ### How to Run TADMaster: 
 #### STEP 1:
 * There are two pathways for running TADMaster, with contact matrix OR without contact matrix.
-* _Contact Matrix is *optional*__ for upload because it is needed only if you want to include TADs annotation of heat-maps visualized.
+* _Contact Matrix is optional__ for upload because it is needed only if you want to include TADs annotation of heat-maps visualized.
 
 #### PATHWAY 1: With Contact Matrix
 * Make changes to the `TADMaster.config` file based on your preferences.
