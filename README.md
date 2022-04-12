@@ -42,7 +42,7 @@ TADMaster is written in <i>Python3, Dash and includes many R, python c++ librari
 _________________
 
 ## Running local versions of TADMaster
-Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
+Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes for job processing and visualization.
 
 _________________
 ## Runing TADMaster: 
@@ -81,24 +81,29 @@ $ tar -xvf job_tadmaster.tar.gz
 _________________
 
 ## STEP B: Bed file Upload
- Next, **copy** the `.bed` files you want to perform analysis on into the directory path specified below based on the pathway your followed above.
+ Next, **copy** the `.bed` files you want to **perform analysis** on into the directory path specified below based on the pathway your followed above.
  
 ###### Path Description:
 > ######  Pathway 1: With Contact Matrix
-> - Path to copy: `job_path/output/Nameofmatrix/` . 
+> - Path to copy the bed files into: `job_path/output/Nameofmatrix/` . 
 _where_
 > 	- `job_path` is the path directory where you specified for your job outputs to be saved
-> 	- `Nameofmatrix` is the Name of the matrix you uploaded.Alternately, any folder inside **output directory**
+> 	- `Nameofmatrix` is the Name of the matrix you uploaded or extracted from the input data provided. Simply, users should expect to have one folder inside **output directory**
 >
 > ######  Pathway 2: Without Contact Matrix
-> -  Path to copy:  `job_tadmaster/output/NoMatrixProvided/` .
+> -  Path to copy the bed files into:  `job_tadmaster/output/NoMatrixProvided/` .
 _where_
-> 	- `job_tadmaster` by default is the name of the file extracted in Step A.
-> 	- `NoMatrixProvided` is the Name of the folder because no matrix was provided
+> 	- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.
+> 	- `NoMatrixProvided` by default is the Name of the folder because no matrix was provided
 >
 
 *Note*: See our wiki for information about [BED file formats](https://github.com/OluwadareLab/TADMaster/wiki/TADMaster#-bed-file-formats-accepted-) accepted by TADMaster
  
+_________________
+
+## STEP C: Analysis Visualization
+
+This is covered in Visualization Section.
 
 _________________
 ## Running TADMaster Plus: 
@@ -124,14 +129,23 @@ $./TADMasterPlus.sh
 * Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
  
- 
-
+ _______________
 
 ## Visualization
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
-* To visualize the analysis breakdown for your completed job and see the different plots, follow the instructions below: 
+* At this step, your job `output path` would contain the BED Files to perform analysis and visualization on.
+* To visualize the analysis from the bed files: 
 
+### STEP 1: Parameter Setting in Visualize.py script
+* Required Inputs are : Specify the `resolution`, `chromosome number`, and `job_path` of the job
+	* We have provided some default input assignment as an example.
+
+### STEP 2: Run the Visualize.py script
+
+```bash
+$ python tadmaster_visualize.py
+```
 _________________
 
 # Content of Folder:
