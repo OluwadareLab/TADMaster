@@ -74,7 +74,7 @@ _________________
 ## STEP A: Data Preprocessing
 There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
-### <u>PATHWAY 1: With Contact Matrix </u>
+### <u>PATHWAY 1: With Contact Matrix</u>
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
