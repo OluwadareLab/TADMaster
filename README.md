@@ -72,7 +72,7 @@ $./TADMasterPlus.sh
 _________________
 ## Runing TADMaster: 
 ### STEP A: Data Preprocessing
-There are two pathways for running TADMaster, with contact matrix OR without contact matrix (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
+There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
 > **PATHWAY 1: With Contact Matrix**
 #### STEP 1: Parameter Setting in TADMaster.config file
