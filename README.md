@@ -44,15 +44,8 @@ _________________
 ## Running local versions of TADMaster
 Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
 
-### How to Run TADMaster: 
-
-<hr>
-
-
 _________________
 ### How to Run TADMaster Plus: 
-
-***
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
@@ -68,7 +61,7 @@ In both scripts:
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
 
 #### STEP 3: Run the TADMasterPlus.sh script
-* Now, you are all done:
+* Please make the TADMasterPlus.sh executable if necessary: `$ chmod +x TADMasterPlus.sh ` 
 
 ```bash
 $./TADMasterPlus.sh 
@@ -76,6 +69,22 @@ $./TADMasterPlus.sh
 * Once Completed, TADMasterPlus will generate all outputs in the output path `job_path` that the user identified.
 * TADMAster Plus also generated a `Read.me` file that describes the output file structure and organization.
  
+ 
+_________________
+### How to Run TADMaster: 
+#### STEP 1:
+* There are two pathways for running TADMaster, with contact matrix OR without contact matrix.
+* Contact Matrix is optional for upload because it is needed only if you want to include TADs annotation of heat-maps visualized.
+
+#### PATHWAY 1: With Contact Matrix
+* Make changes to the `TADMaster.config` file based on your preferences.
+* Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
+	`* We have provided some default  input assignment as an example`
+* Turn off all Normalization or TADCaller algorithm.
+_Note: Running this script is for converting input data from any input format and extract chromosome matrix _
+	
+
+#### PATHWAY 1: With Contact Matrix
 
 _________________
 
