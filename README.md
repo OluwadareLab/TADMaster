@@ -55,7 +55,7 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 * Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
 	* We have provided some default  input assignment as an example
 * Turn off all Normalization or TADCaller algorithm by setting to `False` .
-	** _The purpose of running this script_ is  to convert the input data from the accepted input format and extract the identified chromosome matrix.
+	* _The purpose of running this script_ is  to convert the input data from the accepted input format and extract the identified chromosome matrix.
 
 #### STEP 2: Path change in TADMaster.sh script
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located.
@@ -110,7 +110,7 @@ _________________
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
-* Required Inputs are : Specify the input matrix path, chromosome number, resolution and input datatype.
+* Required Inputs are : Specify the **input matrix path**,  **chromosome number **,  **resolution** and  **input datatype**.
 	* We have provided some default  input assignment as an example.
 * Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
 	* By default we Turned on Normalization: KR and TADCallers: Armatus and Insulation score
@@ -167,7 +167,6 @@ _________________
 - **TADCaller:**  TAD algorithm source codes used by TADMaster
 - **Analysis:** Pre- and Post- processing scripts used by TADMaster 
 - **normalization:** Libraries and Scripts to support data normalization for the web server
-
 
 
 
