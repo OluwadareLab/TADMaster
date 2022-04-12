@@ -1,19 +1,20 @@
 # TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domains 
 
-<img src="http://biomlearn.uccs.edu/static/image/testing.jpg" width="500" height="300">
+<center><img src="http://biomlearn.uccs.edu/static/image/testing.jpg" width="700" height="500"> <center>
 ___________________
 #### OluwadareLab, University of Colorado, Colorado Springs
 ___________________
+
 #### Developers:
 Sean Higgins <br />
 Department of Computer Science <br />
 University of Colorado, Colorado Springs <br />
-Email: [shiggins@uccs.edu](mailto:shiggins@uccs.edu)
+Email: [shiggins@uccs.edu](mailto:shiggins@uccs.edu)<br />
 
 Victor Akpokiro <br />
 Department of Computer Science <br />
 University of Colorado, Colorado Springs <br />
-Email: [vakpokir@uccs.edu](mailto:vakpokir@uccs.edu) <br /><br />
+Email: [vakpokir@uccs.edu](mailto:vakpokir@uccs.edu) <br />
 
 #### Contact:
 Oluwatosin Oluwadare, PhD <br />
@@ -40,8 +41,7 @@ Congratulations! You will now be able to run TADMaster and TADMaster Plus locall
 If you are new to docker  https://docker-curriculum.com/
 ___________________	
 ## Dependencies:
-TADMaster is written in Python3 and Dash and includes many R, python c++ libraries necessary to run the various tools includes and the visualization. All dependencies are included in the Docker environment. <br />
-GPU is not loaded into the docker container as it is not needed to run TADMaster.
+TADMaster is written in Python3 and Dash and includes many R, python c++ libraries necessary to run the various tools includes and the visualization. All dependencies are included in the Docker environment. GPU is not loaded into the docker container as it is not needed to run TADMaster.
 _________________
 
 ## Running local versions of TADMaster
@@ -52,14 +52,15 @@ Now, that you are running a docker container, the instruction below will guide y
 
 ### How to Run TADMaster Plus: 
 #### STEP 1: Parameter Setting in TADMaster.config file
-* Make changes to the TADMaster.config file based on your preferences.
+* Make changes to the `TADMaster.config` file based on your preferences.
 * Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
-	* We have provided some default  input assignment as an example
+	`* We have provided some default  input assignment as an example`
 * Use True or False to turn on or off respectively a Normalization or TADCaller algorithm.
-	* By default we Turned on Normalization: KR and TADCallers: Armatus and Insulation score
+	`* By default we Turned on Normalization: KR and TADCallers: Armatus and Insulation score`
 	
 #### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
-* Replace `path_directory` in line 1 to the directory where your TADMaster.config file is located
+In both scripts:
+* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
 * Change the `home_path` to the directory where `TADMaster` repository you downloaded is located
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
 
