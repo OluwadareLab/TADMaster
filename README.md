@@ -103,7 +103,7 @@ _________________
 
 ## STEP C: Analysis Visualization
 
-This is covered in Visualization Section.
+This is covered in [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization).
 
 _________________
 ## Running TADMaster Plus: 
@@ -129,6 +129,11 @@ $./TADMasterPlus.sh
 * Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
  
+#### STEP 4: Analysis Visualization
+
+This is covered in [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization).
+
+<br>
  _______________
 
 ## Visualization
