@@ -45,7 +45,7 @@ _________________
 Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
 
 _________________
-### How to Run TADMaster Plus: 
+## Running TADMaster Plus: 
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
@@ -70,7 +70,7 @@ $./TADMasterPlus.sh
  
  
 _________________
-### How to Run TADMaster: 
+## Runing TADMaster: 
 ### STEP A: Data Preprocessing
 There are two pathways for running TADMaster, with contact matrix OR without contact matrix (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
