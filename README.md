@@ -27,29 +27,33 @@ ___________________
 ___________________	
 
 ## Build Instructions:
-TADMaster runs in a Docker-containerized environment. Before cloning this repository and attempting to build, the [Docker engine](https://docs.docker.com/engine/install/). If you are new to docker [here is a quick docker tutorial for beginners](https://docker-curriculum.com/). To install and build TADMaster follow these steps.
+TADMaster can be run in a Docker-containerized environment locally on users computer. Before cloning this repository and attempting to build, the [Docker engine](https://docs.docker.com/engine/install/), If you are new to docker [here is a quick docker tutorial for beginners](https://docker-curriculum.com/). <br> 
+To install and build TADMaster follow these steps.
 
 1. Clone this repository locally using the command `git clone https://github.com/OluwadareLab/TADMaster.git && cd TADMaster`.
 2. Pull the TADMaster docker image from docker hub using the command `docker pull oluwadarelab/tadmaster:latest`. This may take a few minutes. Once finished, check that the image was sucessfully pulled using `docker image ls`.
-3. Run the HiCARN container and mount the present working directory to the container using `docker run  --name tadmaster -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster`.
+3. Run the TADMaster container and mount the present working directory to the container using `docker run  --name tadmaster -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster`.
 4. `cd` to your home directory.
 
-Congratulations! You will now be able to run TADMaster and TADMaster Plus locally with no restriction.
+:thumbsup: Congratulations! You can now run TADMaster and TADMaster Plus locally with no restriction.
 
-
-If you are new to docker  https://docker-curriculum.com/
 ___________________	
 ## Dependencies:
-TADMaster is written in Python3 and Dash and includes many R, python c++ libraries necessary to run the various tools includes and the visualization. All dependencies are included in the Docker environment. GPU is not loaded into the docker container as it is not needed to run TADMaster.
+TADMaster is written in <i>Python3, Dash and includes many R, python c++ libraries </i> necessary to run the various tools included and perform analysis visualization. All dependencies are included in the Docker environment. GPU is not loaded into the docker container as it is not needed to run TADMaster.
 _________________
 
 ## Running local versions of TADMaster
-Now, that you are running a docker container, the instruction below will guide you step by step on how to use the cloned TADMaster source codes
+Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
 
 ### How to Run TADMaster: 
 
+_________________
 
+
+_________________
 ### How to Run TADMaster Plus: 
+
+_________________
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
