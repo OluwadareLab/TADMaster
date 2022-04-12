@@ -80,8 +80,8 @@ _________________
 	* We have provided some default  input assignment as an example
 * Turn off all Normalization or TADCaller algorithm. _The purpose of running this script is  to convert the input data from the accepted input format and extract the identified chromosome matrix._
 
-> PATHWAY 2: With Contact Matrix
-**
+> **PATHWAY 2: With Contact Matrix**
+
 _________________
 
 ## Visualization
