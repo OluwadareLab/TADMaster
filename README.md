@@ -94,9 +94,8 @@ $./TADMaster.sh
 ```
 * Once completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMaster  also generates a `Read.me` file that describes the output file structure and organization.
- 
-__
 
+<br>
 
 ### PATHWAY 2: Without Contact Matrix
 * Extract the TADMaster output file structure from  one one of cloned TADMaster files
