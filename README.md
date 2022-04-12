@@ -98,10 +98,12 @@ $./TADMaster.sh
 <br>
 
 ### PATHWAY 2: Without Contact Matrix
-* Extract the TADMaster output file structure from  one one of cloned TADMaster files
+* Extract the TADMaster output file structure we provided.
+
 ```bash
 $ tar -xvf job_tadmaster.tar.gz 
 ```
+_________________
 
 ## STEP B: Bed file Upload
 * Step A above will have generated an output path for users to use.
