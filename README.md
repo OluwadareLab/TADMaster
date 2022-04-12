@@ -74,27 +74,29 @@ _________________
 ## STEP A: Data Preprocessing
 There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
-### <u>PATHWAY 1: With Contact Matrix</u>
+### PATHWAY 1: With Contact Matrix
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
 	* We have provided some default  input assignment as an example
-* Turn off all Normalization or TADCaller algorithm by setting to `False` . _The purpose of running this script is  to convert the input data from the accepted input format and extract the identified chromosome matrix._
+* Turn off all Normalization or TADCaller algorithm by setting to `False` .
+	** _The purpose of running this script_ is  to convert the input data from the accepted input format and extract the identified chromosome matrix.
 
 #### STEP 2: Path change in TADMaster.sh script
-In both scripts:
-* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
-* Change the `home_path` to the directory where `TADMaster` repository you downloaded is located
-* Change the `job_path` to the path directory where you want the job processing outputs to be saved
+* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located.
+* Change the `home_path` to the directory where `TADMaster` repository you downloaded is located.
+* Change the `job_path` to the path directory where you want the job processing outputs to be saved.
 
 #### STEP 3: Run the TADMaster.sh script
 
 ```bash
 $./TADMaster.sh 
 ```
-* Once Completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
+* Once completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMaster  also generates a `Read.me` file that describes the output file structure and organization.
  
+=
+
 
 ### PATHWAY 2: Without Contact Matrix
 * Extract the TADMaster output file structure from  one one of cloned TADMaster files
