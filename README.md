@@ -65,8 +65,8 @@ In both scripts:
 ```bash
 $./TADMasterPlus.sh 
 ```
-* Once Completed, TADMasterPlus will generate all outputs in the output path `job_path` that the user identified.
-* TADMAster Plus also generated a `Read.me` file that describes the output file structure and organization.
+* Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
+* TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
  
  
 _________________
