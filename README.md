@@ -45,12 +45,15 @@ _________________
 Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
 
 ### How to Run TADMaster: 
---
+
+===
 
 
 _________________
 ### How to Run TADMaster Plus: 
---
+
+===
+
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
