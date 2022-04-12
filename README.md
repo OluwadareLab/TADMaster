@@ -1,6 +1,7 @@
 # TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domains 
 
 <center><img src="http://biomlearn.uccs.edu/static/image/testing.jpg" width="700" height="500"> <center>
+
 ___________________
 #### OluwadareLab, University of Colorado, Colorado Springs
 ___________________
@@ -9,12 +10,12 @@ ___________________
 Sean Higgins <br />
 Department of Computer Science <br />
 University of Colorado, Colorado Springs <br />
-Email: [shiggins@uccs.edu](mailto:shiggins@uccs.edu)<br />
+Email: [shiggins@uccs.edu](mailto:shiggins@uccs.edu) <br />
 
 Victor Akpokiro <br />
 Department of Computer Science <br />
 University of Colorado, Colorado Springs <br />
-Email: [vakpokir@uccs.edu](mailto:vakpokir@uccs.edu) <br />
+Email: [vakpokir@uccs.edu](mailto:vakpokir@uccs.edu) 
 
 #### Contact:
 Oluwatosin Oluwadare, PhD <br />
