@@ -46,13 +46,13 @@ Now, that you are running a docker container, follow the step by step instructio
 
 ### How to Run TADMaster: 
 
----
+____
 
 
 _________________
 ### How to Run TADMaster Plus: 
 
----
+____
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
