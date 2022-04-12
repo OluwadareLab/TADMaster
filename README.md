@@ -57,7 +57,7 @@ _________________
 #### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
 In both scripts:
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
-* Change the `home_path` to the directory where `TADMaster` repository you downloaded is located
+* Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
 
 #### STEP 3: Run the TADMasterPlus.sh script
@@ -84,7 +84,7 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 
 #### STEP 2: Path change in TADMaster.sh script
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located.
-* Change the `home_path` to the directory where `TADMaster` repository you downloaded is located.
+* Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located.
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved.
 
 #### STEP 3: Run the TADMaster.sh script
@@ -106,13 +106,18 @@ $ tar -xvf job_tadmaster.tar.gz
 _________________
 
 ## STEP B: Bed file Upload
-* Step A above will have generated an output path for users to use.
-* Next, **copy** the `.bed file` files you will like to compare into this directory `job_path/output/Nameofmatrix/`
-###### Description:
+ Next, **copy** the `.bed` files you want to perform analysis on into the directory path based on the pathway followed above.
+ 
+###### Path Description:
 > ######  Pathway 1:
->
+> - Path to copy: `job_path/output/Nameofmatrix/` where
 > - `job_path` is the path directory where you specified for your job outputs to be saved
 > - `Nameofmatrix` is the Name of the matrix you uploaded.Alternately, any folder inside **output directory**
+>
+> ######  Pathway 2: 
+> -  Path to copy:  `job_tadmaster/output/NoMatrixProvided/`  where
+> - `job_tadmaster` by default is the name of the file extracted in Step A.
+> - `NoMatrixProvided` is the Name because no matrix was provided
 >
  
  
