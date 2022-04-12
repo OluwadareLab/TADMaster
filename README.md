@@ -74,13 +74,13 @@ _________________
 #### STEP 1:
 * There are two pathways for running TADMaster, with contact matrix OR without contact matrix (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
-> **PATHWAY 2: Without Contact Matrix**
+> **PATHWAY 1: With Contact Matrix**
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
 	* We have provided some default  input assignment as an example
 * Turn off all Normalization or TADCaller algorithm. _The purpose of running this script is  to convert the input data from the accepted input format and extract the identified chromosome matrix._
 
-> **PATHWAY 2: With Contact Matrix**
+> **PATHWAY 2: Without Contact Matrix**
 
 _________________
 
