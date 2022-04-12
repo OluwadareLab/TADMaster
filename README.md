@@ -149,6 +149,19 @@ _________________
 ```bash
 $ python tadmaster_visualize.py
 ```
+### STEP 3: Visualize on your Local browser
+* Once, you have executed the python script, You should get the message that `Dash is running on http://0.0.0.0:8050/`
+(ignore warning messages provided).  :thumbsup: Congratulations! This means that you can visualize locally.
+
+
+* Open your browser and copy the URL shown. You would be able to access the visualization of the output jobs.
+
+Please note that for some browsers like safari, localhost requirement could be different. 
+So if  URL:`http://0.0.0.0:8050/` doen't return a visualization use URL: `http://127.0.0.1:8050`
+
+
+
+http://0.0.0.0:8050/
 _________________
 
 # Content of Folder:
