@@ -133,10 +133,8 @@ $./TADMasterPlus.sh
 
 This is covered in [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization).
 
-<br>
- _______________
-
-## Visualization
+_________________
+## Analysis and Visualization
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
 * At this step, your job `output path` would contain the BED Files to perform analysis and visualization on.
