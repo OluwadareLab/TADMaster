@@ -71,7 +71,7 @@ $./TADMasterPlus.sh
  
 _________________
 ### How to Run TADMaster: 
-#### STEP A: Data Preprocessing
+### STEP A: Data Preprocessing
 There are two pathways for running TADMaster, with contact matrix OR without contact matrix (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
 > **PATHWAY 1: With Contact Matrix**
@@ -102,7 +102,7 @@ $./TADMaster.sh
 $ tar -xvf job_tadmaster.tar.gz 
 ```
 
-#### STEP B: Bed file Upload
+### STEP B: Bed file Upload
 * Step A above will have generated an output path for users to use.
 * Next, **copy** the `.bed file` files you will like to compare into this directory `job_path/output/Nameofmatrix/`
 ###### Description:
