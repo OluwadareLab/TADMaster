@@ -1,8 +1,6 @@
 # TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domains 
 
-<center><img src="http://biomlearn.uccs.edu/static/image/testing.jpg" width="700" height="500"> <center>
-
-___________________
+__________________
 #### OluwadareLab, University of Colorado, Colorado Springs
 ___________________
 
