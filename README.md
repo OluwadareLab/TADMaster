@@ -173,7 +173,7 @@ _________________
 
 _________________
 
-# Documentation
+# Web Server Version Documentation
 
 Please see [the wiki](https://github.com/OluwadareLab/TADMaster/wiki) for an extensive documentation of how to use TADMaster functions
 
