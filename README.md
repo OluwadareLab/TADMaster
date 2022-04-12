@@ -1,6 +1,5 @@
 # TADMaster: A Comprehensive Web-based Tool For Analysis of Topologically Associated Domains 
 
-__________________
 #### OluwadareLab, University of Colorado, Colorado Springs
 ___________________
 
@@ -46,14 +45,12 @@ _________________
 Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes
 
 ### How to Run TADMaster: 
-
-_________________
+--
 
 
 _________________
 ### How to Run TADMaster Plus: 
-
-_________________
+--
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
