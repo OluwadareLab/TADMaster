@@ -106,15 +106,15 @@ $ tar -xvf job_tadmaster.tar.gz
 _________________
 
 ## STEP B: Bed file Upload
- Next, **copy** the `.bed` files you want to perform analysis on into the directory path based on the pathway followed above.
+ Next, **copy** the `.bed` files you want to perform analysis on into the directory path specified below based on the pathway your followed above.
  
 ###### Path Description:
-> ######  Pathway 1:
+> ######  Pathway 1: With Contact Matrix
 > - Path to copy: `job_path/output/Nameofmatrix/` where
 > - `job_path` is the path directory where you specified for your job outputs to be saved
 > - `Nameofmatrix` is the Name of the matrix you uploaded.Alternately, any folder inside **output directory**
 >
-> ######  Pathway 2: 
+> ######  Pathway 2: Without Contact Matrix
 > -  Path to copy:  `job_tadmaster/output/NoMatrixProvided/`  where
 > - `job_tadmaster` by default is the name of the file extracted in Step A.
 > - `NoMatrixProvided` is the Name because no matrix was provided
