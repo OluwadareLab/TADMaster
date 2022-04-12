@@ -46,7 +46,7 @@ Now, that you are running a docker container, follow the step by step instructio
 
 ### How to Run TADMaster: 
 
-***
+<hr>
 
 
 _________________
