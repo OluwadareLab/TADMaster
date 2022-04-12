@@ -71,10 +71,10 @@ $./TADMasterPlus.sh
  
 _________________
 ## Runing TADMaster: 
-### STEP A: Data Preprocessing
+## STEP A: Data Preprocessing
 There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
-> **PATHWAY 1: With Contact Matrix**
+### PATHWAY 1: With Contact Matrix
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
 * Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
@@ -96,13 +96,13 @@ $./TADMaster.sh
 * TADMaster  also generates a `Read.me` file that describes the output file structure and organization.
  
 
-> **PATHWAY 2: Without Contact Matrix**
+### PATHWAY 2: Without Contact Matrix
 * Extract the TADMaster output file structure from  one one of cloned TADMaster files
 ```bash
 $ tar -xvf job_tadmaster.tar.gz 
 ```
 
-### STEP B: Bed file Upload
+## STEP B: Bed file Upload
 * Step A above will have generated an output path for users to use.
 * Next, **copy** the `.bed file` files you will like to compare into this directory `job_path/output/Nameofmatrix/`
 ###### Description:
