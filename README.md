@@ -49,7 +49,7 @@ _________________
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
-* Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
+* Required Inputs are : Specify the input matrix path, chromosome number, resolution and input datatype.
 	`* We have provided some default  input assignment as an example`
 * Use True or False to turn on or off respectively a Normalization or TADCaller algorithm.
 	`* By default we Turned on Normalization: KR and TADCallers: Armatus and Insulation score`
@@ -61,7 +61,6 @@ In both scripts:
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
 
 #### STEP 3: Run the TADMasterPlus.sh script
-* Please make the TADMasterPlus.sh executable if necessary: `$ chmod +x TADMasterPlus.sh ` 
 
 ```bash
 $./TADMasterPlus.sh 
@@ -73,19 +72,16 @@ $./TADMasterPlus.sh
 _________________
 ### How to Run TADMaster: 
 #### STEP 1:
-* There are two pathways for running TADMaster, with contact matrix OR without contact matrix.
-* _Contact Matrix is **optional**_ for upload because it is needed only if you want to include TADs annotation of heat-maps visualized.
+* There are two pathways for running TADMaster, with contact matrix OR without contact matrix (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
 
 #### PATHWAY 1: With Contact Matrix
 * Make changes to the `TADMaster.config` file based on your preferences.
-* Required Input are : Specify the input matrix path, chromosome number, resolution and input datatype.
+* Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
 	`* We have provided some default  input assignment as an example`
-* Turn off all Normalization or TADCaller algorithm.
-_Note: Running this script is for converting input data from any input format and extract chromosome matrix _
-	
+* Turn off all Normalization or TADCaller algorithm. The purpose of running this script is  to convert the input data from the accepted input format and extract the identified chromosome matrix._
 
-#### PATHWAY 1: With Contact Matrix
-
+#### PATHWAY 2: With Contact Matrix
+**
 _________________
 
 ## Visualization
