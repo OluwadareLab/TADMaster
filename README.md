@@ -159,14 +159,12 @@ $ python tadmaster_visualize.py
 Please note that for some browsers, like safari, localhost URL could be different. 
 If URL:http://0.0.0.0:8050/ doesn't return a visualization, please use URL: http://127.0.0.1:8050
 
-
-
 _________________
 
 # Content of Folder:
-- job_861482c1-927a-487c-a18a-a2be43fe0478.zip**: A previously submitted job 
-- TADMaster
-- 
+- **job_861482c1-927a-487c-a18a-a2be43fe0478.zip**: A previously submitted job 
+- **Data:** Sample data for users
+- **TADCaller:** folder for all the TAD algorithm
 
 docker run  --name tadmaster -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster
 
