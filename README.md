@@ -110,14 +110,14 @@ _________________
  
 ###### Path Description:
 > ######  Pathway 1: With Contact Matrix
-> - Path to copy: `job_path/output/Nameofmatrix/` .
-> _where_
+> - Path to copy: `job_path/output/Nameofmatrix/` . 
+_where_
 > 	- `job_path` is the path directory where you specified for your job outputs to be saved
 > 	- `Nameofmatrix` is the Name of the matrix you uploaded.Alternately, any folder inside **output directory**
 >
 > ######  Pathway 2: Without Contact Matrix
 > -  Path to copy:  `job_tadmaster/output/NoMatrixProvided/` .
-> _where_
+_where_
 > 	- `job_tadmaster` by default is the name of the file extracted in Step A.
 > 	- `NoMatrixProvided` is the Name because no matrix was provided
 >
