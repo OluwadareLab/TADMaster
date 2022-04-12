@@ -110,8 +110,9 @@ _________________
 
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
+	* We have provided some default parameter setting as an example.
 * Required Inputs are : Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
-	* We have provided some default  input assignment as an example.
+	* We have provided some default parameter setting as an example.
 * Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
 	* By default we Turned on Normalization: KR and TADCallers: Armatus and Insulation score
 	
