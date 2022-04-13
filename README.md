@@ -183,10 +183,7 @@ Please see [the wiki](https://github.com/OluwadareLab/TADMaster/wiki) for an ext
 _________________
 	
 
-# cite
-
-
-
+#### cite
 
 
  ![footer](http://biomlearn.uccs.edu/static/image/UCCS_Logo.png) © 2021 Oluwadare Lab 
