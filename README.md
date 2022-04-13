@@ -152,7 +152,7 @@ ____________
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
 * At this step, your job should be in the output path, `job_path` directory, which  would contain the BED Files to perform analysis and visualization on.
-	* BED files will be located in `job_path/output/<name_of_normalization_or_identifier_used>/`
+	* BED files will be located in `job_path/output/<name_of_identifier_used>/`
 * To visualize the analysis from the bed files: 
 
 ### STEP 1: Parameter Setting in tadmaster_visualize.py  script
