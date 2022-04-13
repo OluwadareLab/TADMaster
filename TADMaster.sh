@@ -6,10 +6,10 @@ echo "Running TADMaster on $input_matrix"
 #--------------------------------------------------------------------------------------------------------
 
 
-home_path="${PWD}"											# change home_path
+home_path="${PWD}"										# change home_path
 Caller_path="${home_path}/TADCallers"
 Norm_method_path="${home_path}/normalization" 
-job_path="${PWD}/example_job_output"     					# change output_path                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+job_path="${PWD}/tadmaster_output"     					# change output_path                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 input_path="${input_matrix}"
 output_path="${job_path}/output"
 temp_path="${job_path}/temp"

@@ -93,8 +93,12 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 
 #### STEP 2: Path change in TADMaster.sh script
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located.
+	* We have provided some default  settings as an example.
 * Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located.
+	* We have provided some default  settings as an example.
+* _make a new directory_: `mkdir tadmaster_output`
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved.
+	* We assigned `job_path`  directory to`tadmaster_output` in the scripts.
 
 #### STEP 3: Run the TADMaster.sh script
 
