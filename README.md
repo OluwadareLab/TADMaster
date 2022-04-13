@@ -45,6 +45,37 @@ _________________
 Now, that you are running a docker container, follow the step by step instructions to execute the cloned TADMaster source codes for job processing and visualization.
 
 _________________
+## Running TADMaster Plus: 
+
+#### STEP 1: Parameter Setting in TADMaster.config file
+* Make changes to the `TADMaster.config` file based on your preferences.
+	* We have provided some default parameter settings as an example.
+* Required Inputs are : Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
+	* We have provided some default parameter setting as an example.
+* Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
+	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus and Insulation score`
+	
+#### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
+In both scripts:
+* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
+* Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located
+* Change the `job_path` to the path directory where you want the job processing outputs to be saved
+	* As an example we specified the directory called `example_job_output`
+
+#### STEP 3: Run the TADMasterPlus.sh script
+
+```bash
+$./TADMasterPlus.sh 
+```
+* Running this script with this settings should take about 3 minutes.
+* Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
+* TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
+ 
+#### STEP 4: Analysis Visualization
+
+Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
+
+_________________
 ## Runing TADMaster: 
 ## STEP A: Data Preprocessing
 There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
@@ -52,8 +83,7 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 ### PATHWAY 1: With Contact Matrix
 #### STEP 1: Parameter Setting in TADMaster.config file
 * Make changes to the `TADMaster.config` file based on your preferences.
-* Required Inputs are: Specify the input matrix path, chromosome number, resolution and input datatype.
-	* We have provided some default  input assignment as an example
+* Required Inputs are: Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
 * Turn off all Normalization or TADCaller algorithm by setting to `False` .
 	* _The purpose of running this script_ is  to convert the input data from the accepted input format and extract the identified chromosome matrix.
 
@@ -81,7 +111,7 @@ $ tar -xvf job_tadmaster.tar.gz
 _________________
 
 ## STEP B: Bed file Upload
- Next, **copy** the `.bed` files you want to **perform analysis** on into the directory path specified below based on the pathway your followed above.
+ Next, **copy** the `.bed` files you want to **perform analysis** on into the directory path specified below based on the pathway you followed above.
  
 ###### Path Description:
 > ######  Pathway 1: With Contact Matrix
@@ -103,40 +133,10 @@ _________________
 
 ## STEP C: Analysis Visualization
 
-This is covered in [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization).
+Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
 
 _________________
-## Running TADMaster Plus: 
-
-#### STEP 1: Parameter Setting in TADMaster.config file
-* Make changes to the `TADMaster.config` file based on your preferences.
-	* We have provided some default parameter settings as an example.
-* Required Inputs are : Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
-	* We have provided some default parameter setting as an example.
-* Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
-	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus and Insulation score`
-	
-#### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
-In both scripts:
-* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
-* Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located
-* Change the `job_path` to the path directory where you want the job processing outputs to be saved
-	* As an example we specified the directory called `example_job_output`
-
-#### STEP 3: Run the TADMasterPlus.sh script
-
-```bash
-$./TADMasterPlus.sh 
-```
-* Running this script with this settings would take about 3 - 5 minutes.
-* Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
-* TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
- 
-#### STEP 4: Analysis Visualization
-
-This is covered in [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization).
-
-_________________
+____________
 ## Analysis and Visualization
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
