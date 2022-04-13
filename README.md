@@ -136,6 +136,8 @@ _________________
 Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
 
 ____________
+
+
 ## Analysis and Visualization
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
