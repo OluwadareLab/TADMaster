@@ -31,7 +31,7 @@ To install and build TADMaster follow these steps.
 
 1. Clone this repository locally using the command `git clone https://github.com/OluwadareLab/TADMaster.git && cd TADMaster`.
 2. Pull the TADMaster docker image from docker hub using the command `docker pull oluwadarelab/tadmaster:latest`. This may take a few minutes. Once finished, check that the image was sucessfully pulled using `docker image ls`.
-3. Run the TADMaster container and mount the present working directory to the container using `docker run  --name tadmaster -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster`.
+3. Run the TADMaster container and mount the present working directory to the container using `docker run -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster`.
 4. `cd` to your home directory.
 
 :thumbsup: Congratulations! You can now run TADMaster and TADMaster Plus locally with no restriction.
