@@ -106,6 +106,7 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 $ chmod +x TADMaster.sh 
 $./TADMaster.sh 
 ```
+* Running this script with this settings should take less than a minute.
 * Once completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMaster  also generates a `Read.me` file that describes the output file structure and organization.
 
@@ -124,16 +125,16 @@ _________________
  
 ###### Path Description:
 > ######  Pathway 1: With Contact Matrix
-> - Path to copy the bed files into: `job_path/output/Nameofmatrix/` . 
+> - Path to copy the bed files into: `job_path/output/Raw/` . 
 _where_
 > 	- `job_path` is the path directory where you specified for your job outputs to be saved
-> 	- `Nameofmatrix` is the Name of the matrix you uploaded or extracted from the input data provided. Simply, users should expect to have one folder inside **output directory**
+> 	- `Raw` signifies that the bed file heatmap was not normalized from TADMaster
 >
 > ######  Pathway 2: Without Contact Matrix
 > -  Path to copy the bed files into:  `job_tadmaster/output/NoMatrixProvided/` .
 _where_
 > 	- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.
-> 	- `NoMatrixProvided` by default is the Name of the folder because no matrix was provided
+> 	- `NoMatrixProvided` signifies that no matrix was provided for the bed files
 >
 
 *Note*: See our wiki for information about [BED file formats](https://github.com/OluwadareLab/TADMaster/wiki/TADMaster#-bed-file-formats-accepted-) accepted by TADMaster

@@ -24,6 +24,7 @@ normalized_path="${job_path}/normalizations"
 if [ -d $job_path ]
 then
 	mkdir $output_path
+	mkdir "${output_path}/Raw"
 	mkdir $temp_path
 	mkdir $additional_file_path
 	mkdir $normalized_path
