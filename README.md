@@ -66,6 +66,7 @@ In both scripts:
 #### STEP 3: Run the TADMasterPlus.sh script
 
 ```bash
+$ chmod +x TADMaster.sh 
 $./TADMasterPlus.sh 
 ```
 * Running this script with this settings should take about 3 minutes.
@@ -96,6 +97,7 @@ There are two pathways for running TADMaster, **with contact matrix _OR_ without
 #### STEP 3: Run the TADMaster.sh script
 
 ```bash
+$ chmod +x TADMaster.sh 
 $./TADMaster.sh 
 ```
 * Once completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
