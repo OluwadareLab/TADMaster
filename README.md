@@ -133,8 +133,8 @@ _where_
 > ######  Pathway 2: Without Contact Matrix
 > -  Path to copy the bed files into:  `job_tadmaster/output/NoMatrixProvided/` .
 _where_
-> 	- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.
-> 	- `NoMatrixProvided` signifies that no matrix was provided for the bed files
+> 		- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.
+> 		- `NoMatrixProvided` signifies that no matrix was provided for the bed files
 >
 
 *Note*: See our wiki for information about [BED file formats](https://github.com/OluwadareLab/TADMaster/wiki/TADMaster#-bed-file-formats-accepted-) accepted by TADMaster
