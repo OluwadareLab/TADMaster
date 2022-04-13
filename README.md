@@ -71,7 +71,7 @@ In both scripts:
 $ chmod +x TADMasterPlus.sh 
 $./TADMasterPlus.sh 
 ```
-* Running this script with this settings should take about 3 minutes.
+* Running this script with this settings should take about 2 minutes.
 * Once Completed, TADMasterPlus will generate all outputs in the output path, `job_path` directory, that the user identified.
 * TADMAster Plus also generates a `Read.me` file that describes the output file structure and organization.
  
@@ -147,6 +147,7 @@ ____________
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
 * At this step, your job `output path` would contain the BED Files to perform analysis and visualization on.
+	* BED files will be located in `job_path/output/<name_of_normalization_used>/`
 * To visualize the analysis from the bed files: 
 
 ### STEP 1: Parameter Setting in tadmaster_visualize.py  script
