@@ -135,7 +135,6 @@ _________________
 
 Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
 
-_________________
 ____________
 ## Analysis and Visualization
 #### Preliminary Information
