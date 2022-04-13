@@ -53,7 +53,7 @@ _________________
 * Required Inputs are : Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
 	* We have provided some default parameter setting as an example.
 * Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
-	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus and Insulation score`
+	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus`
 	
 #### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
 In both scripts:
@@ -75,7 +75,7 @@ $./TADMasterPlus.sh
  
 #### STEP 4: Analysis Visualization
 
-Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
+Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#analysis-and-visualization) below for this.
 
 _________________
 ## Runing TADMaster: 
@@ -136,12 +136,12 @@ _________________
 
 ## STEP C: Analysis Visualization
 
-Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#visualization) below for this.
+Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#analysis-and-visualization) below for this.
 
 ____________
 
 
-## Analysis and Visualization
+# Analysis and Visualization
 #### Preliminary Information
 * When you have completed a TADMaster or TADMaster job submission, the next step is Visualization.
 * At this step, your job `output path` would contain the BED Files to perform analysis and visualization on.
