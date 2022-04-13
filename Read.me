@@ -1,0 +1,39 @@
+Read Me
+-----------------------------------------------------------------------------------------------
+File organization:
+-----------------------------------------------------------------------------------------------
+
+1) Files in Base Directory
+	- The original contact matrix that was uploaded
+	- Transformations of the original contact matrix
+		-This includes the sparse format. If .hic or .h5 were selected, 
+		 then the .cool transformation is also provided.
+	- log.txt
+		- This is the main log which reports the errors in the main pipeline.
+	- log_norm.txt
+		- This is the normalization specific log that reports errors for each
+		  caller selected.
+ 	-TADMaster.config
+		- This is the internal record of the methods selected.
+2) Temp Directory
+	-This directory holds any tempory files needed while processing. It likely only 
+	 contains if CaTCH  is selected.
+
+2) Additional_files Directory
+	-This directory holds any additional files produced by methods.
+
+3) Normalizations Directory
+	- This directory contains the normalized square matrices of the original contact matrix.
+
+4) Output Directory
+	- This directory contains a directory for each normalizion selected. Note non-normalized
+	  inputs are contained under the raw directory.
+		- Every sub-directory cointains the bed files generated using the specified
+		  normalized matrix
+
+
+-----------------------------------------------------------------------------------------------
+Additional Information:
+-----------------------------------------------------------------------------------------------
+
+All additional information can be found at: https://github.com/OluwadareLab/TADMaster/wiki
