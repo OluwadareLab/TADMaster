@@ -66,7 +66,7 @@ In both scripts:
 #### STEP 3: Run the TADMasterPlus.sh script
 
 ```bash
-$ chmod +x TADMaster.sh 
+$ chmod +x TADMasterPlus.sh 
 $./TADMasterPlus.sh 
 ```
 * Running this script with this settings should take about 3 minutes.
