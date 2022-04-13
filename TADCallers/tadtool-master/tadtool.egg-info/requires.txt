@@ -1,0 +1,4 @@
+future
+matplotlib
+numpy>=1.9.0
+progressbar2

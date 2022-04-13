@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: tadtool
+Version: 0.81
+Summary: Assistant to find cutoffs in TAD calling algorithms.
+Home-page: https://github.com/vaquerizaslab/tadtool
+Author: Vaquerizas lab
+Author-email: kai.kruse@mpi-muenster.mpg.de
+License: UNKNOWN
+Download-URL: https://github.com/vaquerizaslab/tadtool/tarball/0.81
+Description: UNKNOWN
+Keywords: bioinformatics,hi-c,genomics,tad
+Platform: UNKNOWN

@@ -1,0 +1,13 @@
+README.md
+setup.cfg
+setup.py
+bin/tadtool
+tadtool/__init__.py
+tadtool/plot.py
+tadtool/tad.py
+tadtool/version.py
+tadtool.egg-info/PKG-INFO
+tadtool.egg-info/SOURCES.txt
+tadtool.egg-info/dependency_links.txt
+tadtool.egg-info/requires.txt
+tadtool.egg-info/top_level.txt

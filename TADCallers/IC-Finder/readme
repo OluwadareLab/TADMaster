@@ -1,0 +1,24 @@
+Please read the LICENSE file first.
+
+Any suggestions and remarks might be addressed to Daniel Jost: daniel.jost@imag.fr
+
+IC_Finder/ contains :
+
+IC_Finder.m
+a MATLAB/OCTAVE subroutine defining the IC_finder function. The toolbox 'Statistics and Machine Learning Toolbox' is needed for MATLAB. The package ‘statistics’ is needed for OCTAVE. To use this function and have more information on it, you can read its description at the beginning of the file or type : ‘help IC_finder’ in the command line.
+For MATLAB, version 2010 or higher is needed. For OCTAVE, version 3.8.0 or higher is needed. For OCTAVE user, before launching the function IC_Finder.m, you would have to put the command : " pkg load statistics " in the octave command line.
+
+Example/
+This folder contains a test map called 'maptest_1.txt' and corresponding .txt files obtained by executing IC_finder (see example command presented in the description of IC_finder). There are also 2 images presenting what kinds of plot you can get with IC_finder.
+
+Notes
+1. All examples presented in the description of IC_finder.m can be launched directly in MATLAB or OCTAVE if you are in the IC_finder/ directory.
+2. If you do not want to start MATLAB with Desktop, you can launch commands from terminal.
+Example :
+*************
+cd IC_finder/
+nice matlab -nodisplay -nojvm -nosplash -r "file='example/maptest_1.txt';IC_finder(file);"
+*************
+However, if you start MATLAB without Desktop, you cannot produce plots.
+
+

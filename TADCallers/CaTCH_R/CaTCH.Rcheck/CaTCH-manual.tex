@@ -1,0 +1,196 @@
+\nonstopmode{}
+\documentclass[letterpaper]{book}
+\usepackage[times,inconsolata,hyper]{Rd}
+\usepackage{makeidx}
+\usepackage[utf8,latin1]{inputenc}
+% \usepackage{graphicx} % @USE GRAPHICX@
+\makeindex{}
+\begin{document}
+\chapter*{}
+\begin{center}
+{\textbf{\huge Package `CaTCH'}}
+\par\bigskip{\large \today}
+\end{center}
+\begin{description}
+\raggedright{}
+\item[Type]\AsIs{Package}
+\item[Title]\AsIs{Call a hierarchy of domains based on Hi-C data}
+\item[Version]\AsIs{1.0}
+\item[Date]\AsIs{2016-07-05}
+\item[Author]\AsIs{Yinxiu Zhan}
+\item[Maintainer]\AsIs{Yinxiu Zhan }\email{yinxiu.zhan@fmi.ch}\AsIs{}
+\item[Imports]\AsIs{parallel}
+\item[Description]\AsIs{This package allows building the hierarchy of
+domains starting from Hi-C data. Each hierarchical
+level is identified by a minimum value of physical
+insulation between neighboring domains.}
+\item[License]\AsIs{GPL-2 or later}
+\item[NeedsCompilation]\AsIs{yes}
+\end{description}
+\Rdcontents{\R{} topics documented:}
+\inputencoding{utf8}
+\HeaderA{CaTCH-package}{Call a hierarchy of domains based on Hi-C data}{CaTCH.Rdash.package}
+\aliasA{CaTCH}{CaTCH-package}{CaTCH}
+\keyword{TADs, domain calling, Hi-C}{CaTCH-package}
+%
+\begin{Description}\relax
+This package allows building the hierarchy of
+domains starting from Hi-C data. Each hierarchical
+level is identified by a minimum value of physical
+insulation between neighboring domains.
+\end{Description}
+%
+\begin{Details}\relax
+
+The DESCRIPTION file:
+
+\Tabular{ll}{
+Package: & CaTCH\\{}
+Type: & Package\\{}
+Title: & Call a hierarchy of domains based on Hi-C data\\{}
+Version: & 1.0\\{}
+Date: & 2016-07-05\\{}
+Author: & Yinxiu Zhan\\{}
+Maintainer: & Yinxiu Zhan <yinxiu.zhan@fmi.ch>\\{}
+Imports: & parallel\\{}
+Description: & This package allows building the hierarchy of
+domains starting from Hi-C data. Each hierarchical
+level is identified by a minimum value of physical
+insulation between neighboring domains.\\{}
+License: & GPL-2 or later\\{}
+NeedsCompilation: & yes\\{}
+Packaged: & 2018-07-10 15:18:41 UTC; yinxiu\\{}
+}
+
+Index of help topics:
+\begin{alltt}
+CaTCH-package           Call a hierarchy of domains based on Hi-C data
+domain.call             Call a hierarchy of domains based on Hi-C data
+\end{alltt}
+
+\end{Details}
+%
+\begin{Author}\relax
+Yinxiu Zhan
+
+Maintainer: Yinxiu Zhan <yinxiu.zhan@fmi.ch>
+\end{Author}
+%
+\begin{References}\relax
+Zhan et al, Reciprocal insulation analysis of Hi-C data shows that TADs represent a functionally but not structurally privileged scale in the hierarchical folding of chromosomes, Genome Research 2017
+\end{References}
+\inputencoding{utf8}
+\HeaderA{domain.call}{Call a hierarchy of domains based on Hi-C data}{domain.call}
+\methaliasA{domain.call.parallel}{domain.call}{domain.call.parallel}
+\keyword{TADs}{domain.call}
+\keyword{hierarchy}{domain.call}
+%
+\begin{Description}\relax
+This package allows building the hierarchy of domains
+starting from Hi-C data. Each hierarchical level is identified
+by a minimum value of physical insulation between
+neighboring domains.
+\end{Description}
+%
+\begin{Usage}
+\begin{verbatim}
+domain.call(input)
+domain.call.parallel(inputs,ncpu=parallel::detectCores()-1L)
+\end{verbatim}
+\end{Usage}
+%
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{input}] 
+File containing Hi-C data for the SINGLE CHROMOSOME with 6 columns:
+\begin{itemize}
+
+\item{} col1 = chromosome
+\item{} col2 = genomic coordinate of the start region
+\item{} col3 = genomic coordinate of the end region
+\item{} col4 = bin of the start region (genomic coordinate divided by binsize)
+\item{} col5 = bin of the end region
+\item{} col6 = Hi-C counts
+
+\end{itemize}
+
+************OR*************
+
+File containing Hi-C data for the SINGLE CHROMOSOME with 4 columns:
+\begin{itemize}
+
+\item{} col1 = chromosome
+\item{} col2 = bin of the start region (genomic coordinate divided by binsize)
+\item{} col3 = bin of the end region (genomic coordinate divided by binsize)
+\item{} col4 = Hi-C counts
+
+\end{itemize}
+
+
+\item[\code{inputs}] 
+A character vector of files as \code{input}
+
+\item[\code{ncpu}] 
+Number of cpu that you want to use (Default ncpu=4)
+
+
+\end{ldescription}
+\end{Arguments}
+%
+\begin{Value}
+Output of
+
+\begin{ldescription}
+\item[\code{\code{domain.call}}]  A list with two elements
+\begin{itemize}
+
+\item{} ncluster: A data.frame with 3 columns
+
+-Chromosome (chromosome)
+
+-Reciprocal insulation (RI)
+
+-Number of domains (ndomains)
+
+
+
+\item{} clusters: A data.frame with 5 columns
+
+-Chromosome (chromosome)
+
+-Reciprocal insulation (RI)
+
+-Start of domain (start)
+
+-End of domain (end)
+
+-Actual insulation (insulation)
+
+
+
+\end{itemize}
+	
+
+
+\item[\code{\code{domain.call.parallel}}]   A list of outputs as in \code{domain.call} for each file	
+\end{ldescription}
+\end{Value}
+%
+\begin{Author}\relax
+Yinxiu Zhan
+\end{Author}
+%
+\begin{References}\relax
+Zhan et al....
+\end{References}
+%
+\begin{Examples}
+\begin{ExampleCode}
+#R code to be here
+	fileinput=system.file("Test.dat.gz",package="CaTCH")
+	library(CaTCH)
+	domain.call(fileinput)
+\end{ExampleCode}
+\end{Examples}
+\printindex{}
+\end{document}
