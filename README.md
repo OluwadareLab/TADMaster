@@ -60,7 +60,8 @@ In both scripts:
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
 * Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
-	* As an example we specified the directory called `example_job_output`
+	* As an example: make a new directory: `mkdir example_job_output`
+	* We specified the directory called `example_job_output` in both scripts
 
 #### STEP 3: Run the TADMasterPlus.sh script
 
