@@ -53,7 +53,7 @@ _________________
 * Required Inputs are : Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
 	* We have provided some default parameter setting as an example.
 * Use `True` or `False` to turn on or off respectively a Normalization or TADCaller algorithm.
-	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus`
+	* By default we Turned on Normalization: `KR` and TADCallers: `Armatus and DI`
 	
 #### STEP 2: Path change in TADMasterPlus.sh and caller.sh scripts
 In both scripts:
