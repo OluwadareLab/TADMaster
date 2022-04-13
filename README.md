@@ -59,8 +59,8 @@ _________________
 In both scripts:
 * Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located
 * Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located
+* _make a new directory_: `mkdir example_job_output`
 * Change the `job_path` to the path directory where you want the job processing outputs to be saved
-	* As an example: _make a new directory_: `mkdir example_job_output`
 	* We assigned `job_path`  directory to`example_job_output` in both scripts.
 
 #### STEP 3: Run the TADMasterPlus.sh script
@@ -145,7 +145,7 @@ ____________
 * At this step, your job `output path` would contain the BED Files to perform analysis and visualization on.
 * To visualize the analysis from the bed files: 
 
-### STEP 1: Parameter Setting in Visualize.py script
+### STEP 1: Parameter Setting in tadmaster_visualize.py  script
 * Required Inputs are : Specify the `resolution`, `chromosome number`, and `job_path` of the job
 	* We have provided some default input assignment as an example.
 
