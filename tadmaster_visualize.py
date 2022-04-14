@@ -18,10 +18,10 @@ from collections import OrderedDict
 import visdcc
 
 resolution = 40000											#change resolution
-chromosome = 19												#change chromosome number
+chromosome = 4												#change chromosome number
 available_normalizations = []
 initial_check_boxes = []
-job_path = 'job_test'								# change output_path 
+job_path = 'example_job_output'								# change output_path 
 heat_matrix_path = job_path + '/normalizations'
 for directory in os.listdir(job_path + '/output/'):
     if not directory.startswith('.'):
