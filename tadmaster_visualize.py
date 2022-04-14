@@ -17,11 +17,11 @@ import dash_bootstrap_components as dbc
 from collections import OrderedDict
 import visdcc
 
-resolution = 10000											#change resolution
-chromosome = 4												#change chromosome number
+resolution = 40000											#change resolution
+chromosome = 19												#change chromosome number
 available_normalizations = []
 initial_check_boxes = []
-job_path = 'example_job_output'								# change output_path 
+job_path = 'job_test'								# change output_path 
 heat_matrix_path = job_path + '/normalizations'
 for directory in os.listdir(job_path + '/output/'):
     if not directory.startswith('.'):
@@ -893,21 +893,22 @@ def toggle_collapse_pca(n, is_open):
 def set_options(norm_path):
     options = []
     for filename in os.listdir(norm_path):
-        with open(os.path.join(norm_path, filename), 'r') as file:
-            sniffer = csv.Sniffer()
-            dialect = sniffer.sniff(file.read(1024))
-            file.seek(0)
-            tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-            if len(tad_data[0]) == 2:
-                tad_data = np.asarray(tad_data, dtype='float')
-            elif len(tad_data[0]) == 3:
-                temp_data = []
-                for i in range(len(tad_data)):
-                    if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                        temp_data.append(tad_data[i][1:])
-                tad_data = np.asarray(temp_data, dtype='float')
-            if tad_data.size != 0:
-                options.append({'label': filename[:-4], 'value': filename})
+        if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
+            with open(os.path.join(norm_path, filename), 'r') as file:
+                sniffer = csv.Sniffer()
+                dialect = sniffer.sniff(file.read(1024))
+                file.seek(0)
+                tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
+                if len(tad_data[0]) == 2:
+                    tad_data = np.asarray(tad_data, dtype='float')
+                elif len(tad_data[0]) == 3:
+                    temp_data = []
+                    for i in range(len(tad_data)):
+                        if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
+                            temp_data.append(tad_data[i][1:])
+                    tad_data = np.asarray(temp_data, dtype='float')
+                if tad_data.size != 0:
+                    options.append({'label': filename[:-4], 'value': filename})
     return [options, options, options, options, options]
 
 
@@ -1062,26 +1063,27 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
     max_len = 0
     if heat_map_options:
         for filename in os.listdir(norm_path):
-            if filename in heat_map_options:
-                with open(os.path.join(norm_path, filename), 'r') as file:
-                    sniffer = csv.Sniffer()
-                    dialect = sniffer.sniff(file.read(1024))
-                    file.seek(0)
-                    tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-                    if len(tad_data[0]) == 2:
-                        tad_data = np.asarray(tad_data, dtype='float')
-                    elif len(tad_data[0]) == 3:
-                        temp_data = []
-                        for i in range(len(tad_data)):
-                            if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                                temp_data.append(tad_data[i][1:])
-                        tad_data = np.asarray(temp_data, dtype='float')
-                    if tad_data.size != 0:
-                        tad_data = np.asarray(tad_data)
-                        tad_data = tad_data/resolution
-                        for line in tad_data:
-                            if max_len < (line[1] - line[0]):
-                                max_len = (line[1] - line[0])
+            if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
+                if filename in heat_map_options:
+                    with open(os.path.join(norm_path, filename), 'r') as file:
+                        sniffer = csv.Sniffer()
+                        dialect = sniffer.sniff(file.read(1024))
+                        file.seek(0)
+                        tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
+                        if len(tad_data[0]) == 2:
+                            tad_data = np.asarray(tad_data, dtype='float')
+                        elif len(tad_data[0]) == 3:
+                            temp_data = []
+                            for i in range(len(tad_data)):
+                                if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
+                                    temp_data.append(tad_data[i][1:])
+                            tad_data = np.asarray(temp_data, dtype='float')
+                        if tad_data.size != 0:
+                            tad_data = np.asarray(tad_data)
+                            tad_data = tad_data/resolution
+                            for line in tad_data:
+                                if max_len < (line[1] - line[0]):
+                                    max_len = (line[1] - line[0])
     mod_contact_matrix = [[None for i in range(len(contact_matrix))] for j in range(int(max_len))]
     for j in range(int(max_len)):
         for i in range(len(contact_matrix)):
@@ -1111,60 +1113,61 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
     color_itt = 0
     if heat_map_options:
         for filename in os.listdir(norm_path):
-            if filename in heat_map_options:
-                with open(os.path.join(norm_path, filename), 'r') as file:
-                    sniffer = csv.Sniffer()
-                    dialect = sniffer.sniff(file.read(1024))
-                    file.seek(0)
-                    tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-                    if len(tad_data[0]) == 2:
-                        tad_data = np.asarray(tad_data, dtype='float')
-                    elif len(tad_data[0]) == 3:
-                        temp_data = []
-                        for i in range(len(tad_data)):
-                            if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                                temp_data.append(tad_data[i][1:])
-                        tad_data = np.asarray(temp_data, dtype='float')
-                    if tad_data.size != 0:
-                        tad_data = np.asarray(tad_data)
-                        bed = tad_data / resolution
-                        top_line_x = []
-                        top_line_y = []
-                        bot_line_x = []
-                        bot_line_y = []
-                        tri_line_x = []
-                        tri_line_y = []
-                        for line in bed:
-                            top_line_x.append(line[0])
-                            top_line_y.append(line[0])
-                            top_line_x.append(line[0])
-                            top_line_y.append(line[1])
-                            top_line_x.append(line[1])
-                            top_line_y.append(line[1])
+            if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
+                if filename in heat_map_options:
+                    with open(os.path.join(norm_path, filename), 'r') as file:
+                        sniffer = csv.Sniffer()
+                        dialect = sniffer.sniff(file.read(1024))
+                        file.seek(0)
+                        tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
+                        if len(tad_data[0]) == 2:
+                            tad_data = np.asarray(tad_data, dtype='float')
+                        elif len(tad_data[0]) == 3:
+                            temp_data = []
+                            for i in range(len(tad_data)):
+                                if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
+                                    temp_data.append(tad_data[i][1:])
+                            tad_data = np.asarray(temp_data, dtype='float')
+                        if tad_data.size != 0:
+                            tad_data = np.asarray(tad_data)
+                            bed = tad_data / resolution
+                            top_line_x = []
+                            top_line_y = []
+                            bot_line_x = []
+                            bot_line_y = []
+                            tri_line_x = []
+                            tri_line_y = []
+                            for line in bed:
+                                top_line_x.append(line[0])
+                                top_line_y.append(line[0])
+                                top_line_x.append(line[0])
+                                top_line_y.append(line[1])
+                                top_line_x.append(line[1])
+                                top_line_y.append(line[1])
 
-                            bot_line_x.append(line[0])
-                            bot_line_y.append(line[0])
-                            bot_line_x.append(line[1])
-                            bot_line_y.append(line[0])
-                            bot_line_x.append(line[1])
-                            bot_line_y.append(line[1])
+                                bot_line_x.append(line[0])
+                                bot_line_y.append(line[0])
+                                bot_line_x.append(line[1])
+                                bot_line_y.append(line[0])
+                                bot_line_x.append(line[1])
+                                bot_line_y.append(line[1])
 
-                            tri_line_x.append(line[0])
-                            tri_line_y.append(0)
-                            tri_line_x.append(line[0] + (line[1] - line[0]) / 2)
-                            tri_line_y.append((line[1] - line[0]) * math.sqrt(3) / 2 * scaling_factor)
-                            tri_line_x.append(line[1])
-                            tri_line_y.append(0)
-                        fig.add_trace(go.Scatter(x=top_line_x, y=top_line_y, mode="lines", name=filename[:-4],
-                                                 line=dict(color=colors[color_itt])), row=1, col=1)
-                        fig.add_trace(
-                            go.Scatter(x=bot_line_x, y=bot_line_y, mode="lines", line=dict(color=colors[color_itt]),
-                                       showlegend=False), row=1, col=1)
-                        fig.add_trace(
-                            go.Scatter(x=tri_line_x, y=tri_line_y, mode="lines", line=dict(color=colors[color_itt]),
-                                       showlegend=False), row=2, col=1)
-            if filename[:-4] in options:
-                color_itt += 1
+                                tri_line_x.append(line[0])
+                                tri_line_y.append(0)
+                                tri_line_x.append(line[0] + (line[1] - line[0]) / 2)
+                                tri_line_y.append((line[1] - line[0]) * math.sqrt(3) / 2 * scaling_factor)
+                                tri_line_x.append(line[1])
+                                tri_line_y.append(0)
+                            fig.add_trace(go.Scatter(x=top_line_x, y=top_line_y, mode="lines", name=filename[:-4],
+                                                     line=dict(color=colors[color_itt])), row=1, col=1)
+                            fig.add_trace(
+                                go.Scatter(x=bot_line_x, y=bot_line_y, mode="lines", line=dict(color=colors[color_itt]),
+                                           showlegend=False), row=1, col=1)
+                            fig.add_trace(
+                                go.Scatter(x=tri_line_x, y=tri_line_y, mode="lines", line=dict(color=colors[color_itt]),
+                                           showlegend=False), row=2, col=1)
+                if filename[:-4] in options:
+                    color_itt += 1
     fig.update_xaxes(matches='x')
     fig.update_xaxes(showline=True, linewidth=1, ticks="inside", linecolor='black', row=2, col=1)
     fig.update_layout(showlegend=True)
@@ -1191,26 +1194,27 @@ def data_extract(norm_path):
     tad_dict = OrderedDict()
     tad_dict_binned = OrderedDict()
     for filename in os.listdir(norm_path):
-        with open(os.path.join(norm_path, filename), 'r') as file:
-            spamreader = csv.reader(file)
-            sniffer = csv.Sniffer()
-            dialect = sniffer.sniff(file.read(1024))
-            file.seek(0)
-            tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-            if len(tad_data[0]) == 2:
-                tad_data = np.asarray(tad_data, dtype='float')
-            elif len(tad_data[0]) == 3:
-                temp_data = []
-                for i in range(len(tad_data)):
-                    if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                        temp_data.append(tad_data[i][1:])
-                tad_data = np.asarray(temp_data, dtype='float')
-        if tad_data.size != 0:
-            color_dict[filename[:-4]] = colors[color_itt]
-            tad_dict[filename[:-4]] = tad_data
-            tad_data = np.asarray(tad_data)
-            tad_dict_binned[filename[:-4]] = tad_data / resolution
-            color_itt += 1
+        if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
+            with open(os.path.join(norm_path, filename), 'r') as file:
+                spamreader = csv.reader(file)
+                sniffer = csv.Sniffer()
+                dialect = sniffer.sniff(file.read(1024))
+                file.seek(0)
+                tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
+                if len(tad_data[0]) == 2:
+                    tad_data = np.asarray(tad_data, dtype='float')
+                elif len(tad_data[0]) == 3:
+                    temp_data = []
+                    for i in range(len(tad_data)):
+                        if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
+                            temp_data.append(tad_data[i][1:])
+                    tad_data = np.asarray(temp_data, dtype='float')
+            if tad_data.size != 0:
+                color_dict[filename[:-4]] = colors[color_itt]
+                tad_dict[filename[:-4]] = tad_data
+                tad_data = np.asarray(tad_data)
+                tad_dict_binned[filename[:-4]] = tad_data / resolution
+                color_itt += 1
     return [tad_dict, tad_dict_binned, color_dict]
 
 

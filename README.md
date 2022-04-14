@@ -157,7 +157,7 @@ ____________
 
 ### STEP 1: Parameter Setting in tadmaster_visualize.py  script
 * Required Inputs are : Specify the `resolution`, `chromosome number`, and `job_path` of the job
-	* We have provided some default input assignment as an example for TADMaster Plus Job.
+	* We have provided some default input assignment as an example for TADMaster Plus Job visualization.
 
 ### STEP 2: Run the Visualize.py script
 
