@@ -17,7 +17,7 @@ import dash_bootstrap_components as dbc
 from collections import OrderedDict
 import visdcc
 
-resolution = 40000											#change resolution
+resolution = 10000											#change resolution
 chromosome = 4												#change chromosome number
 available_normalizations = []
 initial_check_boxes = []
