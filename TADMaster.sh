@@ -39,7 +39,7 @@ then
 	mkdir $additional_file_path
 	mkdir $normalized_path
 else
-	echo "The job path that you using in the config file is currently occupied by anouther job"
+	echo "The job path that you using in the config file is currently occupied by another job"
 	exit
 fi
 
