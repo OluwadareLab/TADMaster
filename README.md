@@ -175,7 +175,7 @@ $ python tadmaster_visualize.py
 If URL:http://0.0.0.0:8050/ doesn't return a visualization, please use URL: http://127.0.0.1:8050
 
 
-**Note**: Minor compatibility issues between certain operating systems and browsers have been observed with the local TADMaster visualization script. 
+**Important Note for Users**: Minor compatibility issues between certain operating systems and browsers have been observed with the local TADMaster visualization script. 
 These issues arise from improper loading of data chunks and can be resolved by closing the browser (or tab) and reloading local host.
 
 _________________
