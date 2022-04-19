@@ -21,13 +21,26 @@ normalized_path="${job_path}/normalizations"
 #--------------------------------------------------------------------------------------------------------
 
 
-if [ -d $job_path ]
+if [ -d $job_path ] && [ -z "$(ls -A $job_path)" ]
 then
+	echo "Making directories in the job path provided"
 	mkdir $output_path
 	mkdir "${output_path}/Raw"
 	mkdir $temp_path
 	mkdir $additional_file_path
 	mkdir $normalized_path
+elif [ ! -d $job_path ]
+then
+	echo "Job path did not exist. Making Job path and directories"
+	mkdir $job_path
+	mkdir $output_path
+	mkdir "${output_path}/Raw"
+	mkdir $temp_path
+	mkdir $additional_file_path
+	mkdir $normalized_path
+else
+	echo "The job path that you using in the config file is currently occupied by anouther job"
+	exit
 fi
 
 

@@ -2,6 +2,11 @@ import dash
 import csv
 import os
 import base64
+from PIL import Image
+import matplotlib
+from matplotlib import cm
+from matplotlib.colors import Normalize
+import matplotlib.pyplot as plt
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
@@ -32,11 +37,21 @@ current_directory = default_normalization
 for file in os.listdir(current_directory):
     initial_check_boxes.append(file)
 initial_drop_down = initial_check_boxes[0]
-color_scales = px.colors.named_colorscales()
+color_scales = list(set(plt.colormaps()).intersection(px.colors.named_colorscales()))
 color_scales.append('TadMaster')
 colors = ["Aqua", "Blue", "Chartreuse", "Gold", "DeepPink", "DarkViolet",
           "Gray", "Brown", "DarkGreen", "Orchid", "Olive", "Tan", "Yellow",
           "Khaki", "DarkBlue", "Crimson", "SandyBrown", "Violet", "PowderBlue"]
+tad_master_color = [[0.0, "rgb(255,255,255)"],
+                    [0.1111111111111111, "rgb(255,230,230)"],
+                    [0.2222222222222222, "rgb(255,153,153)"],
+                    [0.3333333333333333, "rgb(255,77,77)"],
+                    [0.4444444444444444, "rgb(255,0,0)"],
+                    [0.5555555555555556, "rgb(255,42,0)"],
+                    [0.6666666666666666, "rgb(255,85,0)"],
+                    [0.7777777777777778, "rgb(255,173,0)"],
+                    [0.8888888888888888, "rgb(255,213,0)"],
+                    [1.0, "rgb(255,255,0)"]]
 
 
 
@@ -1033,18 +1048,11 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
         options.append(item['label'])
     if heat_map_colorscale == 'TadMaster':
 
-        heat_map_color = [[0.0, "rgb(255,255,255)"],
-                                  [0.1111111111111111, "rgb(255,230,230)"],
-                                  [0.2222222222222222, "rgb(255,153,153)"],
-                                  [0.3333333333333333, "rgb(255,77,77)"],
-                                  [0.4444444444444444, "rgb(255,0,0)"],
-                                  [0.5555555555555556, "rgb(255,42,0)"],
-                                  [0.6666666666666666, "rgb(255,85,0)"],
-                                  [0.7777777777777778, "rgb(255,173,0)"],
-                                  [0.8888888888888888, "rgb(255,213,0)"],
-                                  [1.0, "rgb(255,255,0)"]]
+        heat_map_color = matplotlib.colors.LinearSegmentedColormap.from_list("", ["white", "tomato", "red", "orange", "yellow"])
+        legend_color = tad_master_color
     else:
         heat_map_color = heat_map_colorscale
+        legend_color = heat_map_color
 
     for topdir, dirs, files in os.walk(heat_matrix_path):
         display_file = ""
@@ -1060,6 +1068,19 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
         contact_matrix = np.asarray(contact_matrix)
         contact_matrix = contact_matrix + 1
         contact_matrix = np.log(contact_matrix)
+    xmin = 0
+    xmax = len(contact_matrix)
+    ymin = 0
+    ymax = len(contact_matrix)
+    amin = np.amin(contact_matrix)
+    amax = np.amax(contact_matrix)
+    cNorm = Normalize(vmin=amin, vmax=amax)
+    scalarMap = cm.ScalarMappable(norm=cNorm, cmap=heat_map_color)
+    seg_colors = scalarMap.to_rgba(contact_matrix)
+    raw_img = Image.fromarray(np.uint8(seg_colors * 255))
+    raw_copy = raw_img
+    matrix_img = raw_img.rotate(90)
+
     max_len = 0
     if heat_map_options:
         for filename in os.listdir(norm_path):
@@ -1084,6 +1105,16 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
                             for line in tad_data:
                                 if max_len < (line[1] - line[0]):
                                     max_len = (line[1] - line[0])
+    rotated_img = raw_copy.rotate(45, expand=True)
+    width, height = rotated_img.size
+    left = 0
+    rotated_y_buffer = max_len * math.sqrt(3)/2
+    top = height / 2 - rotated_y_buffer
+    right = width
+    bottom = height / 2
+    scaling_factor = (xmax-xmin)/width *1.1
+    rotated_img = rotated_img.crop((left, top, right, bottom))
+
     mod_contact_matrix = [[None for i in range(len(contact_matrix))] for j in range(int(max_len))]
     for j in range(int(max_len)):
         for i in range(len(contact_matrix)):
@@ -1101,15 +1132,60 @@ def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorsc
     fig.update_yaxes(title_text="Region Number", row=1, col=1)
     fig.update_xaxes(title_text="Region Number", visible=True, color='#444', row=2, col=1)
     fig.update_yaxes(showticklabels=False,  row=2, col=1)
+    fig.append_trace(
+        go.Scatter(
+            x=[xmin, xmax],
+            y=[ymin, ymax],
+            mode="markers",
+            showlegend=False,
+            marker={"color": [np.amin(contact_matrix), np.amax(contact_matrix)],
+                    "colorscale": legend_color,
+                    "showscale": True,
+                    "colorbar": {"title": "Counts",
+                                 "titleside": "right"},
+                    "opacity": 0
+                    }
+        )
+        , 1, 1
+    )
 
-    test = go.Heatmap(z=contact_matrix, colorbar=dict(lenmode='fraction', len=0.75, y=0.63),
-                      colorscale=heat_map_color)
-    test2 = go.Heatmap(z=mod_contact_matrix, showscale=False, colorscale=heat_map_color)
+    # Add image
+    fig.update_layout(
+        images=[dict(
+            x=xmin,
+            sizex=xmax - xmin,
+            y=ymax,
+            sizey=ymax - ymin,
+            xref="x",
+            yref="y",
+            layer="below",
+            source=matrix_img),
+        ]
+    )
+    fig.add_layout_image(
+        x=0,
+        row=2,
+        col=1,
+        sizex=xmax - xmin,
+        y=0,
+        xanchor="left",
+        yanchor="bottom",
+        sizey=rotated_y_buffer,
+        sizing="stretch",
+        xref="x",
+        yref="y",
+        opacity=1.0,
+        layer="below",
+        source=rotated_img,
+    )
+    # Configure other layout
+    fig.update_layout(
+        xaxis=dict(showgrid=False, zeroline=False, range=[xmin, xmax]),
+        yaxis=dict(showgrid=False, zeroline=False, range=[ymin, ymax]),
+    )
 
-    fig.append_trace(test, 1, 1)
-    fig.append_trace(test2,2,1)
-    #fig.update_yaxes(scaleanchor="x", scaleratio=1)
-    scaling_factor = (len(contact_matrix)) / (math.sqrt(2) * len(contact_matrix))
+    fig.update_layout(yaxis=dict(scaleanchor="x", scaleratio=1))
+
     color_itt = 0
     if heat_map_options:
         for filename in os.listdir(norm_path):

@@ -171,8 +171,12 @@ $ python tadmaster_visualize.py
 
 * Open your browser and copy the URL shown. You would be able to access the visualization of the output jobs.
 
-Please note that for some browsers, like safari, localhost URL could be different. 
+* Please note that for some browsers, like safari, localhost URL could be different. 
 If URL:http://0.0.0.0:8050/ doesn't return a visualization, please use URL: http://127.0.0.1:8050
+
+
+**Note**: Minor compatibility issues between certain operating systems and browsers have been observed with the local TADMaster visualization script. 
+These issues arise from improper loading of data chunks and can be resolved by closing the browser (or tab) and reloading local host.
 
 _________________
 
