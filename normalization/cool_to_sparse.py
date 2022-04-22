@@ -37,11 +37,15 @@ def main(argv):
     if contact_matrix[0][0].isnumeric():
         for i in range(len(contact_matrix)):
             if int(contact_matrix[i][0]) == chromosome and int(contact_matrix[i][3]) == chromosome:
-                sparse_matrix.append([contact_matrix[i][1]/resolution, contact_matrix[i][4]/resolution, contact_matrix[i][6]])
+                sparse_matrix.append([int(contact_matrix[i][1])/resolution, int(contact_matrix[i][4])/resolution, contact_matrix[i][6]])
+            else:
+                error = 'format error int'
     else:
         for i in range(len(contact_matrix)):
             if contact_matrix[i][0] == 'chr' + str(chromosome) and contact_matrix[i][3] == 'chr' + str(chromosome):
                 sparse_matrix.append([int(contact_matrix[i][1])/resolution, int(contact_matrix[i][4])/resolution, contact_matrix[i][6]])
+            else:
+                error = 'format error string'
                 
     if error == '':
         with open(output_file, 'w') as f:
