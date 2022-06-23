@@ -80,39 +80,8 @@ $./TADMasterPlus.sh
 Refer to the [Visualization Section](https://github.com/OluwadareLab/TADMaster#analysis-and-visualization) below for this.
 
 _________________
-## Runing TADMaster: 
+## Running TADMaster: 
 ## STEP A: Data Preprocessing
-There are two pathways for running TADMaster, **with contact matrix _OR_ without contact matrix** (optional). _Contact Matrix is **optional**_  because it is needed only to include TADs annotation on heat-maps visualization.
-
-### PATHWAY 1: With Contact Matrix
-#### STEP 1: Parameter Setting in TADMaster.config file
-* Make changes to the `TADMaster.config` file based on your preferences.
-* Required Inputs are: Specify the **input matrix path**,  **chromosome number**,  **resolution** and  **input datatype**.
-* Turn off all Normalization or TADCaller algorithm by setting to `False` .
-	* _The purpose of running this script_ is  to convert the input data from the accepted input format and extract the identified chromosome matrix.
-
-#### STEP 2: Path change in TADMaster.sh script
-* Replace `path_directory` in line 1 to the directory where your `TADMaster.config` file is located.
-	* We have provided some default  settings as an example.
-* Change the `home_path` to the directory where `TADMaster` repository files you downloaded is located.
-	* We have provided some default  settings as an example.
-* _make a new directory_: `mkdir tadmaster_output`
-* Change the `job_path` to the path directory where you want the job processing outputs to be saved.
-	* We assigned `job_path`  directory to`tadmaster_output` in the scripts.
-
-#### STEP 3: Run the TADMaster.sh script
-
-```bash
-$ chmod +x TADMaster.sh 
-$./TADMaster.sh 
-```
-* Running this script with this settings should take less than a minute.
-* Once completed, TADMaster will generate all outputs in the output path, `job_path` directory, that the user identified.
-* TADMaster  also generates a `Read.me` file that describes the output file structure and organization.
-
-<br>
-
-### PATHWAY 2: Without Contact Matrix
 * Extract the TADMaster output file structure we provided.
 
 ```bash
@@ -123,14 +92,6 @@ _________________
 ## STEP B: Bed file Upload
  Next, **copy** the `.bed` files you want to **perform analysis** on into the directory path specified below based on the pathway you followed above.
  
-###### Path Description:
-> ######  Pathway 1: With Contact Matrix
-> - Path to copy the bed files into: `job_path/output/Raw/` . 
-_where_
-> 	- `job_path` is the path directory where you specified for your job outputs to be saved
-> 	- `Raw` signifies that the bed file heatmap was not normalized from TADMaster
->
-> ######  Pathway 2: Without Contact Matrix
 > -  Path to copy the bed files into:  `job_tadmaster/output/NoMatrixProvided/` .
 _where_
 > 		- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.

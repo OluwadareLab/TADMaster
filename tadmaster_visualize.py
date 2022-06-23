@@ -26,7 +26,7 @@ resolution = 10000											#change resolution
 chromosome = 4												#change chromosome number
 available_normalizations = []
 initial_check_boxes = []
-job_path = 'example_job_output'								# change output_path 
+job_path = 'job_tadmaster'								# change output_path 
 heat_matrix_path = job_path + '/normalizations'
 for directory in os.listdir(job_path + '/output/'):
     if not directory.startswith('.'):
@@ -98,102 +98,6 @@ app.layout = html.Div([
         ),
 
     ], style={"text-align": "center"}),
-    # ------------------------------------------------------------------------------
-    # Heat Map
-    # ------------------------------------------------------------------------------
-    html.Div([
-        dbc.Button(
-            html.H4(children="TAD Heat Map", className="header_text", 
-                style={"textAlign": "center", "fontWeight": "600", "marginBottom": "0px"}),
-                id="collapse-button-heatmap",
-                size='lg',
-                color="light",
-                block=True,
-                style = {"marginTop": "50px"}
-            ),
-
-        dbc.Collapse(
-            [
-                html.Div(
-                    [
-                        dbc.Row(
-                            dbc.Col(
-
-                                [dbc.FormGroup(
-                                    [   
-                                        dbc.Label("Select Methods:", style={"marginTop": "10px"}),
-                                        dbc.Checklist(
-                                            id="Heat Map Options",
-                                            inline=True,
-                                            style={"textAlign": "center"}
-                                        ),
-
-                                    ]
-                                ),
-                                dbc.Row(
-                                    [
-                                        dbc.Col(html.Div([
-                                            dbc.FormGroup(
-                                                [   
-                                                    dbc.Label("Select Scaling:", style={"marginTop": "10px"}),
-                                                    dbc.RadioItems(
-                                                        options=[{"value": 'Log', "label": 'Log'},
-                                                                {"value": 'Raw', "label": 'Raw'}],
-                                                        value='Log',
-                                                        id="Heat Map Scale",
-                                                        inline=True,
-                                                    ),
-
-                                                ]
-                                            )
-                                            ]), width=4),
-                                        
-                                            dbc.Col(html.Div([
-                                            dbc.FormGroup(
-                                                [   
-                                                    dbc.Label("Select Color Scale:", style={"marginTop": "10px"}),
-                                                    dcc.Dropdown(
-                                                        id='colorscale',
-                                                        options=[{"value": x, "label": x}
-                                                                 for x in color_scales],
-                                                        value='TadMaster'
-                                                    ),
-                                                ]
-                                            )
-                                            ]), width=4),
-                                    ],
-                                    justify="center",
-                                )],
-                                width={"size": 10, "offset": 1},
-                            )
-                        ),
-                    ]
-                ),
-
-                html.Hr(),
-
-                dcc.Loading(id="loading-icon",
-                            children=[
-                                html.Div(
-                                    [
-                                        dbc.Card(
-                                            dbc.CardBody(children=html.Div([
-                                                dcc.Graph(id="Heat Map", style={'width': '100%',
-                                                                                'height': '100%'}), ],
-                                                style={'width': '100%', 'height': '100%',
-                                                       'display': 'flex', 'align-items': 'center',
-                                                       'justify-content': 'center'})),
-                                            className="mb-3",
-                                            style={'height': '63vw'})
-                                    ], style={'height': '63vw'})]),
-
-            ],
-
-            id="collapse-heatmap",
-            is_open=True
-        )
-
-    ], style={'marginTop': 20}),
     # ------------------------------------------------------------------------------
     # Number of TADs
     # ------------------------------------------------------------------------------
@@ -782,19 +686,6 @@ app.layout = html.Div([
 # ------------------------------------------------------------------------------
 # Collapse Callbacks
 # -----------------------------------------------------------------------------
-
-
-@app.callback(
-    Output("collapse-heatmap", "is_open"),
-    Input("collapse-button-heatmap", "n_clicks"),
-    State("collapse-heatmap", "is_open"),
-)
-def toggle_collapse_heatmap(n, is_open):
-    if n:
-        return not is_open
-    return is_open
-
-
 @app.callback(
     Output("collapse-number tad", "is_open"),
     Input("collapse-button-number tad", "n_clicks"),
@@ -899,8 +790,7 @@ def toggle_collapse_pca(n, is_open):
 
 
 @app.callback(
-    [Output('Heat Map Options', 'options'),
-     Output('Number TADs Options', 'options'),
+    [Output('Number TADs Options', 'options'),
      Output('Whisker Options', 'options'),
      Output('Boundary Options', 'options'),
      Output('MoC Options', 'options')],
@@ -924,14 +814,8 @@ def set_options(norm_path):
                     tad_data = np.asarray(temp_data, dtype='float')
                 if tad_data.size != 0:
                     options.append({'label': filename[:-4], 'value': filename})
-    return [options, options, options, options, options]
+    return [options, options, options, options]
 
-
-@app.callback(
-    Output('Heat Map Options', 'value'),
-    Input('Heat Map Options', 'options'))
-def set_heat_map_value(available_options):
-    return [available_options[0]['value']]
 
 
 @app.callback(
@@ -1034,229 +918,6 @@ def set_num_tads_options(size):
 # ------------------------------------------------------------------------------
 # Plot Generators
 # -----------------------------------------------------------------------------
-
-@app.callback(
-    Output("Heat Map", "figure"),
-    Input('Normalization', 'value'),
-    Input('Heat Map Options', 'options'),
-    Input('Heat Map Options', 'value'),
-    Input("colorscale", "value"),
-    Input("Heat Map Scale", "value"))
-def set_display_heat_map(norm_path, opt_list, heat_map_options, heat_map_colorscale, scale):
-    options = []
-    for item in opt_list:
-        options.append(item['label'])
-    if heat_map_colorscale == 'TadMaster':
-
-        heat_map_color = matplotlib.colors.LinearSegmentedColormap.from_list("", ["white", "tomato", "red", "orange", "yellow"])
-        legend_color = tad_master_color
-    else:
-        heat_map_color = heat_map_colorscale
-        legend_color = heat_map_color
-
-    for topdir, dirs, files in os.walk(heat_matrix_path):
-        display_file = ""
-        for file in files:
-            if os.path.splitext(file)[0] == os.path.basename(norm_path):
-                display_file = file
-        if display_file == "":
-            display_file = "Raw.txt"
-        displayed_matrix = os.path.join(topdir, display_file)
-    with open(displayed_matrix, 'r') as file:
-        contact_matrix = [[float(digit) for digit in line.split()] for line in file]
-    if scale == 'Log':
-        contact_matrix = np.asarray(contact_matrix)
-        contact_matrix = contact_matrix + 1
-        contact_matrix = np.log(contact_matrix)
-    xmin = 0
-    xmax = len(contact_matrix)
-    ymin = 0
-    ymax = len(contact_matrix)
-    amin = np.amin(contact_matrix)
-    amax = np.amax(contact_matrix)
-    cNorm = Normalize(vmin=amin, vmax=amax)
-    scalarMap = cm.ScalarMappable(norm=cNorm, cmap=heat_map_color)
-    seg_colors = scalarMap.to_rgba(contact_matrix)
-    raw_img = Image.fromarray(np.uint8(seg_colors * 255))
-    raw_copy = raw_img
-    matrix_img = raw_img.rotate(90)
-
-    max_len = 0
-    if heat_map_options:
-        for filename in os.listdir(norm_path):
-            if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
-                if filename in heat_map_options:
-                    with open(os.path.join(norm_path, filename), 'r') as file:
-                        sniffer = csv.Sniffer()
-                        dialect = sniffer.sniff(file.read(1024))
-                        file.seek(0)
-                        tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-                        if len(tad_data[0]) == 2:
-                            tad_data = np.asarray(tad_data, dtype='float')
-                        elif len(tad_data[0]) == 3:
-                            temp_data = []
-                            for i in range(len(tad_data)):
-                                if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                                    temp_data.append(tad_data[i][1:])
-                            tad_data = np.asarray(temp_data, dtype='float')
-                        if tad_data.size != 0:
-                            tad_data = np.asarray(tad_data)
-                            tad_data = tad_data/resolution
-                            for line in tad_data:
-                                if max_len < (line[1] - line[0]):
-                                    max_len = (line[1] - line[0])
-    rotated_img = raw_copy.rotate(45, expand=True)
-    width, height = rotated_img.size
-    left = 0
-    rotated_y_buffer = max_len * math.sqrt(3)/2
-    top = height / 2 - rotated_y_buffer
-    right = width
-    bottom = height / 2
-    scaling_factor = (xmax-xmin)/width *1.1
-    rotated_img = rotated_img.crop((left, top, right, bottom))
-
-    mod_contact_matrix = [[None for i in range(len(contact_matrix))] for j in range(int(max_len))]
-    for j in range(int(max_len)):
-        for i in range(len(contact_matrix)):
-
-            if i < j or i >= len(contact_matrix) - j:
-                mod_contact_matrix[j][i] = 0
-            else:
-                mod_contact_matrix[j][i] = contact_matrix[i-j][i+j]
-    print("Construct Heat Map")
-    fig = make_subplots(rows=2, cols=1, vertical_spacing=0.15,
-                          subplot_titles=('Contact Heatmap', 'Triangular Heatmap Projection'),
-                          row_width=[0.1, 0.5])
-    fig.update_layout(plot_bgcolor='rgba(0,0,0,0)')
-    fig.update_xaxes(title_text="Region Number", row=1, col=1)
-    fig.update_yaxes(title_text="Region Number", row=1, col=1)
-    fig.update_xaxes(title_text="Region Number", visible=True, color='#444', row=2, col=1)
-    fig.update_yaxes(showticklabels=False,  row=2, col=1)
-    fig.append_trace(
-        go.Scatter(
-            x=[xmin, xmax],
-            y=[ymin, ymax],
-            mode="markers",
-            showlegend=False,
-            marker={"color": [np.amin(contact_matrix), np.amax(contact_matrix)],
-                    "colorscale": legend_color,
-                    "showscale": True,
-                    "colorbar": {"title": "Counts",
-                                 "titleside": "right"},
-                    "opacity": 0
-                    }
-        )
-        , 1, 1
-    )
-
-    # Add image
-    fig.update_layout(
-        images=[dict(
-            x=xmin,
-            sizex=xmax - xmin,
-            y=ymax,
-            sizey=ymax - ymin,
-            xref="x",
-            yref="y",
-            layer="below",
-            source=matrix_img),
-        ]
-    )
-    fig.add_layout_image(
-        x=0,
-        row=2,
-        col=1,
-        sizex=xmax - xmin,
-        y=0,
-        xanchor="left",
-        yanchor="bottom",
-        sizey=rotated_y_buffer,
-        sizing="stretch",
-        xref="x",
-        yref="y",
-        opacity=1.0,
-        layer="below",
-        source=rotated_img,
-    )
-    # Configure other layout
-    fig.update_layout(
-        xaxis=dict(showgrid=False, zeroline=False, range=[xmin, xmax]),
-        yaxis=dict(showgrid=False, zeroline=False, range=[ymin, ymax]),
-    )
-
-    fig.update_layout(yaxis=dict(scaleanchor="x", scaleratio=1))
-
-    color_itt = 0
-    if heat_map_options:
-        for filename in os.listdir(norm_path):
-            if not filename.startswith('.') and os.stat(os.path.join(norm_path, filename)).st_size != 0 and "Zone.Identifier" not in str(os.path.basename(filename)):
-                if filename in heat_map_options:
-                    with open(os.path.join(norm_path, filename), 'r') as file:
-                        sniffer = csv.Sniffer()
-                        dialect = sniffer.sniff(file.read(1024))
-                        file.seek(0)
-                        tad_data = [[digit for digit in line.strip().split(sep=dialect.delimiter)] for line in file]
-                        if len(tad_data[0]) == 2:
-                            tad_data = np.asarray(tad_data, dtype='float')
-                        elif len(tad_data[0]) == 3:
-                            temp_data = []
-                            for i in range(len(tad_data)):
-                                if tad_data[i][0] == str(chromosome) or tad_data[i][0] == 'chr' + str(chromosome):
-                                    temp_data.append(tad_data[i][1:])
-                            tad_data = np.asarray(temp_data, dtype='float')
-                        if tad_data.size != 0:
-                            tad_data = np.asarray(tad_data)
-                            bed = tad_data / resolution
-                            top_line_x = []
-                            top_line_y = []
-                            bot_line_x = []
-                            bot_line_y = []
-                            tri_line_x = []
-                            tri_line_y = []
-                            for line in bed:
-                                top_line_x.append(line[0])
-                                top_line_y.append(line[0])
-                                top_line_x.append(line[0])
-                                top_line_y.append(line[1])
-                                top_line_x.append(line[1])
-                                top_line_y.append(line[1])
-
-                                bot_line_x.append(line[0])
-                                bot_line_y.append(line[0])
-                                bot_line_x.append(line[1])
-                                bot_line_y.append(line[0])
-                                bot_line_x.append(line[1])
-                                bot_line_y.append(line[1])
-
-                                tri_line_x.append(line[0])
-                                tri_line_y.append(0)
-                                tri_line_x.append(line[0] + (line[1] - line[0]) / 2)
-                                tri_line_y.append((line[1] - line[0]) * math.sqrt(3) / 2 * scaling_factor)
-                                tri_line_x.append(line[1])
-                                tri_line_y.append(0)
-                            fig.add_trace(go.Scatter(x=top_line_x, y=top_line_y, mode="lines", name=filename[:-4],
-                                                     line=dict(color=colors[color_itt])), row=1, col=1)
-                            fig.add_trace(
-                                go.Scatter(x=bot_line_x, y=bot_line_y, mode="lines", line=dict(color=colors[color_itt]),
-                                           showlegend=False), row=1, col=1)
-                            fig.add_trace(
-                                go.Scatter(x=tri_line_x, y=tri_line_y, mode="lines", line=dict(color=colors[color_itt]),
-                                           showlegend=False), row=2, col=1)
-                if filename[:-4] in options:
-                    color_itt += 1
-    fig.update_xaxes(matches='x')
-    fig.update_xaxes(showline=True, linewidth=1, ticks="inside", linecolor='black', row=2, col=1)
-    fig.update_layout(showlegend=True)
-    fig.update_layout(legend=dict(
-        yanchor="top",
-        y=0.99,
-        xanchor="left",
-        x=1.15
-    ))
-    fig.update_coloraxes()
-
-    return fig
-
 
 @app.callback(
     [Output("TAD dict", "data"),
@@ -1471,7 +1132,7 @@ def set_display_stacked_boundary_map(tad_dict_binned, stacked_boundary_option):
             title = str(i) + " methods"
             stacked_boundary_plot.add_bar(name=title, x=names, y=stack[:, i])
         stacked_boundary_plot.update_layout(barmode='stack', template='simple_white')
-        stacked_boundary_plot.update_layout(legend_title_text='Boundaries found in:')
+        stacked_boundary_plot.update_layout(legend_title_text='Boundaries found in:' , xaxis_title='Callers', yaxis_title='Percent of Shared Boundaries')
     else:
         stacked_boundary_plot = px.bar()
     return stacked_boundary_plot
@@ -1527,7 +1188,7 @@ def set_display_stacked_Domain_map(tad_dict_binned, stacked_domain_option):
             title = str(i) + " methods"
             stacked_domain_plot.add_bar(name=title, x=names, y=stack[:, i])
         stacked_domain_plot.update_layout(barmode='stack', template='simple_white')
-        stacked_domain_plot.update_layout(legend_title_text='Domains found in:')
+        stacked_domain_plot.update_layout(legend_title_text='Domains found in:', xaxis_title='Callers', yaxis_title='Percent of Shared Domains')
     else:
         stacked_domain_plot = px.bar()
     return stacked_domain_plot
@@ -1553,6 +1214,7 @@ def set_MoC_Comparison(MoC, tad_dict_binned, MoC_option):
         MoC_Comparison_plot.add_bar(x=names, y=MoC[row_select])
         MoC_Comparison_plot.update_layout(template='simple_white')
         MoC_Comparison_plot.update_yaxes(title_text="Measure of Concordance")
+        MoC_Comparison_plot.update_xaxes(title_text="Callers")
     else:
         MoC_Comparison_plot = px.bar()
     return MoC_Comparison_plot
@@ -1572,6 +1234,7 @@ def set_MoC(MoC, tad_dict_binned):
         MoC_plot.add_bar(x=names, y=average)
         MoC_plot.update_layout(template='simple_white')
         MoC_plot.update_yaxes(title_text="Average Measure of Concordance")
+        MoC_plot.update_xaxes(title_text="Callers")
     else:
         MoC_plot = px.bar()
     return MoC_plot
@@ -1627,6 +1290,7 @@ def set_PCA(MoC, tad_dict_binned, markersize, norm_path):
         )
         PCA_plot.update_traces(marker=dict(size=markersize))
         PCA_plot.update_layout(template='simple_white')
+        PCA_plot.update_layout(xaxis_title='Principal Component 1', yaxis_title='Principal Component 2')
     else:
         PCA_plot = px.bar()
     return PCA_plot
