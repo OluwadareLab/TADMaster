@@ -32,7 +32,7 @@ To install and build TADMaster follow these steps.
 1. Clone this repository locally using the command `git clone https://github.com/OluwadareLab/TADMaster.git && cd TADMaster`.
 2. Pull the TADMaster docker image from docker hub using the command `docker pull oluwadarelab/tadmaster:latest`. This may take a few minutes. Once finished, check that the image was sucessfully pulled using `docker image ls`.
 3. Run the TADMaster container and mount the present working directory to the container using `docker run -v ${PWD}:${PWD}  -p 8050:8050 -it oluwadarelab/tadmaster`.
-4. `cd` to your home directory.
+4. `cd` to your home directory where TADMaster is downloaded.
 
 :thumbsup: Congratulations! You can now run TADMaster and TADMaster Plus locally with no restriction.
 
@@ -91,7 +91,7 @@ _________________
 
 ## STEP B: Bed file Upload
  Next, **copy** the `.bed` files you want to **perform analysis** on into the directory path specified below based on the pathway you followed above.
- 
+ <br /> *We have provided two example bed files you can use as a sample in the Data Folder*
 > -  Path to copy the bed files into:  `job_tadmaster/output/NoMatrixProvided/` .
 _where_
 > 		- `job_tadmaster` by default is the name of the _passive output directory_ extracted in Step A into the TADMaster directory. Passive because it wasn't specified by you.
