@@ -161,7 +161,7 @@ _________________
 ### cite
 
 _________________
- ![footer](http://biomlearn.uccs.edu/static/image/UCCS_Logo.png) © 2022 Oluwadare Lab 
+ ![footer](http://biomlearn.uccs.edu/static/image/UCCS_Logo.png) © 2022 Bioinformatics Lab 
 	  
 	
 
