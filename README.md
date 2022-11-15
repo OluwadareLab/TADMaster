@@ -158,7 +158,8 @@ Please see [the wiki](https://github.com/OluwadareLab/TADMaster/wiki) for an ext
 
 _________________
 	
-### cite
+### cite:
+Higgins, S., Akpokiro, V., Westcott, A., & Oluwadare, O. (2022). TADMaster: a comprehensive web-based tool for the analysis of topologically associated domains. BMC bioinformatics, 23(1), 1-10.
 
 _________________
  ![footer](http://biomlearn.uccs.edu/static/image/UCCS_Logo.png) © 2022 Bioinformatics Lab 
