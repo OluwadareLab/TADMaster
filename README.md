@@ -43,6 +43,18 @@ http://biomlearn.uccs.edu/TADMaster/upload_existing/
 *Note you can upload additional bed files once the job has been processed
 
 -----------------------------------------------------------------------------------------------
+TadMasterWeb Migration:
+-----------------------------------------------------------------------------------------------
+The TADMaster web server is dockerised. To move it to a new server:  
+1) clone the TADMasterWeb Branch of the Tadmaster repo
+2) open the docker file and ensure the exposed ports are free, or change the ports such that they are free.
+3) run docker build . 
+4) once the docker image is built, run /usr/bin/docker run --rm -p {targetHostPort}:8000 -v /storage/store/TADMaster:/var/www/html/TADMaster/Site/storage -it -d --name TADMaster tadmasterserver
+5) where 8000 is the port inside the docker and targetHost port is the port on your host machine that you want the server to be avalible on IE: 80 for defualt http port.
+6) set up a systemd task to ensure the start command runs on startup so that a server reboot does not take the server down.
+
+
+-----------------------------------------------------------------------------------------------
 Additional Information:
 -----------------------------------------------------------------------------------------------
 
